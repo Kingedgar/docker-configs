@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+docker run -d --name pyload \
+	 --net=container:transmission_openvpn \
+	 --cap-add=NET_ADMIN \
+	 -v /mnt/KodiDrive/pyload/Downloads:/opt/pyload/Downloads \
+   	 -v /mnt/KodiDrive/pyload/pyload-config:/opt/pyload/pyload-config \
+	 -e UID=1000 \
+   	 -e GID=1002 \
+writl/pyload:latest

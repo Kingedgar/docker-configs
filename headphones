@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker run -d --name=headphones \
+	--net=container:transmission_openvpn \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-v /mnt/KodiDrive/headphones:/config \
+	-v /mnt/KodiDrive/completed:/downloads \
+	-v /mnt/KodiDrive/Multimedia/Music:/music \
+	--restart unless-stopped \
+	linuxserver/headphones

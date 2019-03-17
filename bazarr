@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker run -d --name=bazarr \
+	--net=container:transmission_openvpn \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-v /mnt/KodiDrive/bazarr:/config \
+	-v /mnt/KodiDrive/Multimedia/fixed_movies:/movies \
+	-v /mnt/KodiDrive/Multimedia/TV:/tv \
+	--restart unless-stopped \
+	linuxserver/bazarr

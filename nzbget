@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+docker run -d --name=nzbget \
+	--net=container:transmission_openvpn \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-v /mnt/KodiDrive/nzbget:/config \
+	-v /mnt/KodiDrive/completed:/downloads \
+	--restart unless-stopped \
+	linuxserver/nzbget

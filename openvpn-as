@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+docker run -d --name=openvpn-as \
+  --cap-add=NET_ADMIN \
+  --privileged \
+  -e PUID=1000 \
+  -e PGID=1001 \
+  -e TZ=America/Chicago \
+  -p 9943:943 \
+  -p 9443:9443 \
+  -p 1194:1194/udp \
+  -v /mnt/KodiDrive/openvpn-as:/config \
+linuxserver/openvpn-as

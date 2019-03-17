@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker run -d --name=lidarr \
+	--net=container:transmission_openvpn \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-v /mnt/KodiDrive/lidarr:/config \
+	-v /mnt/KodiDrive/Multimedia/Music:/music \
+	-v /mnt/KodiDrive/completed:/downloads \
+	--restart unless-stopped \
+	linuxserver/lidarr

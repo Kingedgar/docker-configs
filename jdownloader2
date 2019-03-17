@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+docker run -d --name=jdownloader2 \
+	--cap-add=NET_ADMIN \
+	--net=container:transmission_openvpn \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /mnt/KodiDrive/jdownloader2/config:/config:rw \
+	-v /mnt/KodiDrive/jdownloader2/output:/output:rw \
+	-e USER_ID=1001 \
+	-e GROUP_ID=1002 \
+	-e KEEP_APP_RUNNING=1 \
+	-e VNC_PASSWORD=buttsex \
+	jlesage/jdownloader-2

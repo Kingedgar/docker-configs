@@ -1,0 +1,50 @@
+#!/bin/bash
+
+docker run --name transmission_openvpn --cap-add=NET_ADMIN --device=/dev/net/tun -d \
+--network=edgarnet \
+--dns "209.222.18.222" \
+-v /mnt/KodiDrive/:/data \
+-v /etc/locatime:/etc/localtime:ro \
+-e OPENVPN_PROVIDER=PIA \
+-e OPENVPN_CONFIG="CA Toronto" \
+-e OPENVPN_OPTS="--inactive 3600 --ping 10 --ping-exit 60" \
+-e OPENVPN_USERNAME=p4877007 \
+-e OPENVPN_PASSWORD=LWZHxwR9fG \
+-e LOCAL_NETWORK=192.168.56.0/24 \
+-e TRANSMISSION_SCRAPE_PAUSED_TORRENTS_ENABLED=false \
+-e TRANSMISSION_BLOCKLIST_ENABLED=true \
+-e TRANSMISSION_BLOCKLIST_URL="http://john.bitsurge.net/public/biglist.p2p.gz" \
+-e TRANSMISSION_RATIO_LIMIT_ENABLED=true \
+-e TRANSMISSION_RATIO_LIMIT=1 \
+-e TRANSMISSION_SEED_QUEUE_ENABLED=true \
+-e TRANSMISSION_SEED_QUEUE_SIZE=5 \
+-e TRANSMISSION_SPEED_LIMIT_UP_ENABLED=true \
+-e TRANSMISSION_SPEED_LIMIT_UP_ENABLED=true \
+-e TRANSMISSION_SPEED_LIMIT_UP=50 \
+-e TRANSMISSION_START_ADDED_TORRENTS=true \
+-e WEBPROXY_ENABLED=true \
+-e WEBPROXY_PORT=8888 \
+-e PUID=1000 -e PGID=1002 \
+--log-driver json-file \
+--log-opt max-size=1g \
+--restart unless-stopped \
+-p 9091:9091 \
+-p 8888:8888 \
+-p 8000:8000 \
+-p 5800:5800 \
+-p 5801:5900 \
+-p 3129:3129 \
+-p 5050:5050 \
+-p 9999:8181 \
+-p 8080:8080 \
+-p 8081:8081 \
+-p 9090:9090 \
+-p 6767:6767 \
+-p 6789:6789 \
+-p 8686:8686 \
+-p 8989:8989 \
+-p 7878:7878 \
+-p 8337:8337 \
+-p 8090:8090 \
+-p 9117:9117 \
+haugene/transmission-openvpn

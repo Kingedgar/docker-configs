@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker run -d --name=cops \
+	--network=edgarnet \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-p 9998:80 \
+	-v /mnt/KodiDrive/cops:/config \
+	-v /mnt/KodiDrive/Multimedia/CalibreLibrary:/books \
+	--restart unless-stopped \
+	linuxserver/cops

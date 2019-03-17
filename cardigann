@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+docker run -d --name=cardigann \
+	--network=edgarnet \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e HTTP_PROXY=172.22.0.2:8888 \
+	-p 5060:5060 \
+	-v /mnt/KodiDrive/cardigann:/config \
+	--restart unless-stopped \
+	linuxserver/cardigann

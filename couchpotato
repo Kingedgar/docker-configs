@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+docker run -d --name=couchpotato \
+	--net=container:transmission_openvpn \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-e UMASK_SET=002 \
+	-v /mnt/KodiDrive/couchpotato/config:/config \
+	-v /mnt/KodiDrive/couchpotato/downloads:/downloads \
+	-v /mnt/KodiDrive/couchpotato/movies:/movies \
+	--restart unless-stopped \
+	linuxserver/couchpotato

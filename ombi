@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+docker run -d --name=ombi \
+	-e PUID=1000 \
+	-e GUID=1002 \
+	-e TZ=America/Chicago \
+	-p 3579:3579 \
+	-v /mnt/KodiDrive/ombi/config:/config \
+	--restart unless-stopped \
+	linuxserver/ombi 

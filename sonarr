@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker run -d --name=sonarr \
+	--net=container:transmission_openvpn \
+	-e PUID=1000 \
+	-e PGID=1002 \
+	-e TZ=America/Chicago \
+	-v /mnt/KodiDrive/sonarr:/config \
+	-v /mnt/KodiDrive/Multimedia/TV:/tv \
+	-v /mnt/KodiDrive/completed:/downloads \
+	--restart unless-stopped \
+	linuxserver/sonarr
